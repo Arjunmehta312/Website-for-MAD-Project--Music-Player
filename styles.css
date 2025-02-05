@@ -416,3 +416,28 @@ footer {
 .back-to-top.visible {
     display: flex;
 }
+
+.team-member .social-links {
+    margin-top: 1rem;
+}
+
+.team-member .social-links a {
+    display: inline-block;
+    margin: 0 0.5rem;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.team-member .social-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.team-member .social-links .fa-github:hover {
+    color: #333;
+}
+
+.team-member .social-links .fa-linkedin:hover {
+    color: #0077b5;
+}
