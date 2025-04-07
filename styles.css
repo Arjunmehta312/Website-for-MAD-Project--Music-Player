@@ -1,9 +1,12 @@
 /* Global Styles */
 :root {
-  --primary-color: #1db954;
-  --secondary-color: #191414;
-  --text-color: #ffffff;
-  --background-color: #121212;
+  --primary-color: #e41e26; /* Red */
+  --secondary-color: #1a1a1a; /* Dark Gray/Black */
+  --text-color: #f2f2f2; /* Off-White */
+  --background-color: #0c0c0c; /* Very Dark Black */
+  --accent-color: #ffffff; /* White accent */
+  --hover-color: #ff3b41; /* Lighter Red for Hover */
+  --card-background: #1f1f1f; /* Slightly Lighter Black for Cards */
 }
 
 * {
@@ -17,6 +20,9 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%), 
+                    repeating-linear-gradient(45deg, rgba(228, 30, 38, 0.02) 0px, rgba(228, 30, 38, 0.02) 1px, 
+                    transparent 1px, transparent 11px);
 }
 
 a {
@@ -28,6 +34,10 @@ a {
 header {
   background-color: var(--secondary-color);
   padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(228, 30, 38, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 nav {
@@ -43,6 +53,8 @@ nav {
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--primary-color);
+  text-shadow: 0 0 10px rgba(228, 30, 38, 0.3);
+  letter-spacing: 1px;
 }
 
 nav ul {
@@ -55,7 +67,25 @@ nav ul li {
 }
 
 nav ul li a {
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  width: 100%;
 }
 
 nav ul li a:hover,
@@ -75,31 +105,75 @@ main {
 .team-hero {
   text-align: center;
   padding: 4rem 0;
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(228, 30, 38, 0.1);
 }
 
 h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
+  color: var(--accent-color);
+  text-shadow: 0 2px 10px rgba(228, 30, 38, 0.5);
+  position: relative;
+  display: inline-block;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background-color: var(--primary-color);
+}
+
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background-color: var(--primary-color);
 }
 
 .cta-button {
   display: inline-block;
   background-color: var(--primary-color);
-  color: var(--text-color);
+  color: var(--accent-color);
   padding: 0.75rem 1.5rem;
   border-radius: 50px;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
   margin-top: 1rem;
+  box-shadow: 0 4px 8px rgba(228, 30, 38, 0.3);
 }
 
 .cta-button:hover {
-  background-color: #1ed760;
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
 }
 
 /* Features Section */
 .features {
-  margin-top: 4rem;
+  margin-top: 2rem;
+  text-align: center;
+  padding: 3rem 0;
 }
 
 .feature-grid {
@@ -112,13 +186,15 @@ h1 {
 .feature-item {
   text-align: center;
   padding: 2rem;
-  background-color: var(--secondary-color);
+  background-color: var(--card-background);
   border-radius: 10px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(228, 30, 38, 0.1);
 }
 
 .feature-item:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(228, 30, 38, 0.15);
 }
 
 .feature-item i {
@@ -129,8 +205,9 @@ h1 {
 
 /* Tech Stack Section */
 .tech-stack {
-  margin-top: 4rem;
+  margin-top: 2rem;
   text-align: center;
+  padding: 3rem 0;
 }
 
 .tech-grid {
@@ -141,14 +218,16 @@ h1 {
 }
 
 .tech-item {
-  background-color: var(--secondary-color);
+  background-color: var(--card-background);
   padding: 1.5rem;
   border-radius: 10px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(228, 30, 38, 0.1);
 }
 
 .tech-item:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(228, 30, 38, 0.15);
 }
 
 .tech-item h3 {
@@ -161,7 +240,8 @@ h1 {
   display: flex;
   align-items: center;
   gap: 2rem;
-  margin-top: 4rem;
+  margin-top: 2rem;
+  padding: 3rem 0;
 }
 
 .product-image img {
@@ -218,14 +298,16 @@ h1 {
 }
 
 .feature-card {
-  background: var(--secondary-color);
+  background: var(--card-background);
   padding: 1.5rem;
   border-radius: 10px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(228, 30, 38, 0.1);
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(228, 30, 38, 0.15);
 }
 
 .feature-card i {
@@ -249,36 +331,52 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 .team-member {
-  text-align: center;
-  background-color: var(--secondary-color);
+  background-color: var(--card-background);
   padding: 2rem;
   border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(228, 30, 38, 0.1);
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(228, 30, 38, 0.15);
 }
 
 .team-member img {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1rem;
+  border: 3px solid var(--primary-color);
+}
+
+.team-member h2 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
 }
 
 /* Footer Styles */
 footer {
-  text-align: center;
-  padding: 2rem 0;
   background-color: var(--secondary-color);
+  color: var(--text-color);
+  text-align: center;
+  padding: 1.5rem;
   margin-top: 4rem;
+  border-top: 1px solid rgba(228, 30, 38, 0.3);
 }
 
 /* Tech Section Styles */
 .tech-section {
-  padding: 4rem 0;
+  margin-top: 2rem;
   text-align: center;
+  padding: 3rem 0;
 }
 
 .tech-grid {
@@ -289,18 +387,20 @@ footer {
 }
 
 .tech-card {
-  background: var(--secondary-color);
-  padding: 2rem;
+  background-color: var(--card-background);
+  padding: 1.5rem;
   border-radius: 10px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(228, 30, 38, 0.1);
 }
 
 .tech-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(228, 30, 38, 0.15);
 }
 
 .tech-card i {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: var(--primary-color);
   margin-bottom: 1rem;
 }
@@ -394,23 +494,24 @@ footer {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: var(--primary-color);
-    color: var(--text-color);
+    background-color: var(--primary-color);
+    color: var(--accent-color);
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    display: none;
-    align-items: center;
+    display: flex;
     justify-content: center;
-    transition: all 0.3s ease;
-    z-index: 1000;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, background-color 0.3s;
+    border: none;
+    box-shadow: 0 4px 8px rgba(228, 30, 38, 0.3);
 }
 
 .back-to-top:hover {
-    transform: translateY(-5px);
-    background: #1ed760;
+    background-color: var(--hover-color);
 }
 
 .back-to-top.visible {
@@ -431,13 +532,22 @@ footer {
 
 .team-member .social-links a:hover {
     color: var(--primary-color);
-    transform: translateY(-3px);
 }
 
 .team-member .social-links .fa-github:hover {
-    color: #333;
+    color: var(--primary-color);
 }
 
 .team-member .social-links .fa-linkedin:hover {
-    color: #0077b5;
+    color: var(--primary-color);
+}
+
+.download-button {
+  background-color: var(--secondary-color);
+  border: 2px solid var(--primary-color);
+  margin-left: 1rem;
+}
+
+.download-button:hover {
+  background-color: var(--primary-color);
 }
